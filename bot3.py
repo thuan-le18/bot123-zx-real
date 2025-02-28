@@ -117,7 +117,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(invite_message, parse_mode="HTML")
 
         step_1 = (
-            "Bạn bấm sao chép link nhóm ở dưới\n"
+            "Bạn bấm sao chép link nhóm ở dưới lại rồi mời người khác vào.\n"
             "<code>https://t.me/+MPYtI16HEBVmOTg1</code>,\n"
          
         )
