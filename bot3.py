@@ -36,13 +36,14 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         keyboard = [
             [InlineKeyboardButton("📄BÀI LÀM", callback_data="bailam")],
             [InlineKeyboardButton("⏳TIME", callback_data="time")],
-            [InlineKeyboardButton(⚠️ LƯU Ý ", callback_data="luuy")],
+            [InlineKeyboardButton("⚠️ LƯU Ý ", callback_data="luuy")],
             [InlineKeyboardButton("👫MỜI VÀO NHÓM", callback_data="moivaonhom")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         message = ("Xin chào 👋\n\n"
-                   
+                   "**ĐÂY CHỈ LÀ ROBOT HƯỚNG DẪN**.\n\n"
+                   "**Vui lòng không gửi tin nhắn tại đây❌❌**.\n\n"
                    "Bấm các nút phía dưới👇👇để được hướng dẫn.")
         await query.message.reply_text(message, reply_markup=reply_markup, parse_mode="Markdown")
 
