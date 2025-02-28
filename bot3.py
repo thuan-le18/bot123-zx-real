@@ -73,20 +73,20 @@ async def button_click(update: Update, context: CallbackContext) -> None:
 
     elif query.data == "time":
         time_message = ("<b>Thời gian làm việc</b>\n"
-                        "• 8h sáng bạn đi đăng trên fb rồi chụp lại (Rảnh lúc nào làm lúc đó).\n\n"
-                        "• 12h bạn gửi những ảnh bạn đi đăng bài qua Telegram @minhvuzx.\n\n"
-                        "• Nếu qua 12h bạn làm thêm thì gửi qua trước 19H.")
+                        "8h sáng bạn đi đăng trên fb rồi chụp lại (Rảnh lúc nào làm lúc đó).\n\n"
+                        "12h bạn gửi những ảnh bạn đi đăng bài qua Telegram @minhvuzx.\n\n"
+                        "Nếu qua 12h bạn làm thêm thì gửi qua trước 19H.")
         await query.message.reply_text(time_message, parse_mode="HTML")
 
         salary_message = ("<b>Thời gian nhận lương</b>\n"
                           
-                          "• LƯƠNG SẼ ĐƯỢC NHẬN VÀO 19H-19H30.\n\n"
-                          "• Khi nào kênh thông báo yêu cầu CTV gửi STK để nhận lương thì bạn vui lòng gửi STK qua cho @minhvuzx.")
+                          "LƯƠNG SẼ ĐƯỢC NHẬN VÀO 19H-19H30.\n\n"
+                          "Khi nào kênh thông báo yêu cầu CTV gửi STK để nhận lương thì bạn vui lòng gửi STK qua cho @minhvuzx.")
         await query.message.reply_text(salary_message, parse_mode="HTML")
 
         example_message = ("<b>Ví dụ</b>\n"
-                           "• Sáng 8h bạn làm được 17 cmt thì gửi qua mình lúc 12h trưa.\n\n"
-                           "• Nếu sau 12h bạn làm thêm 22 cmt thì bạn gửi qua mình lúc nào cũng được, miễn trước 19h tối.")
+                           "Sáng 8h bạn làm được 17 cmt thì gửi qua mình lúc 12h trưa.\n\n"
+                           "Nếu sau 12h bạn làm thêm 22 cmt thì bạn gửi qua mình lúc nào cũng được, miễn trước 19h tối.")
         await query.message.reply_text(example_message, parse_mode="HTML")
 
         # Thêm 3 dấu chấm tách riêng biệt
@@ -112,29 +112,29 @@ async def button_click(update: Update, context: CallbackContext) -> None:
     elif query.data == "moivaonhom":
         invite_message = (
             "<b>Hướng dẫn mời vào nhóm:</b>\n\n"
-            "• Bạn mời 1 người vào nhóm là được 60k.\n\n"
+            "Bạn mời 1 người vào nhóm là được 60k.\n\n"
         )
         await query.message.reply_text(invite_message, parse_mode="HTML")
 
         step_1 = (
-            "• Bạn bấm sao chép link nhóm ở dưới\n"
+            "Bạn bấm sao chép link nhóm ở dưới\n"
             "<code>https://t.me/+MPYtI16HEBVmOTg1</code>,\n"
          "  rồi mời người khác vào.\n\n"
         )
         await query.message.reply_text(step_1, parse_mode="HTML")
 
         step_2 = (
-            "• Bạn mời họ vào nhóm,họ tham gia nhóm là được.\n\n"
+            "Bạn mời họ vào nhóm,họ tham gia nhóm là được.\n\n"
         )
         await query.message.reply_text(step_2, parse_mode="HTML")
 
         step_3 = (
-            "• Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
+            "Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
         )
         await query.message.reply_text(step_3, parse_mode="HTML")
 
         step_4 = (
-            "• Bạn mời người khác vào nhóm thì phải đăng ít nhất 10 bài viết mới được tính lượt mời."
+            "Bạn mời người khác vào nhóm thì phải đăng ít nhất 10 bài viết mới được tính lượt mời."
         )
         await query.message.reply_text(step_4, parse_mode="HTML")
 
