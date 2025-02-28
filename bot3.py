@@ -59,7 +59,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         
         work_message = ("<b>Cách làm việc</b>\n"
                         
-                        "Bạn tham gia các nhóm trên Facebook 'Việc làm online, Tìm việc làm'....\n"
+                        "Bạn tham gia các nhóm trên Facebook 'Việc làm online, Tìm việc làm....\n"
                         "Sau đó bạn đăng nội dung đó vào các hội nhóm rồi chụp lại gửi cho @minhvuzx.\n\n"
                         "* Đăng ít nhất 10 bài viết hoặc 30 bình luận mới có lương và không giới hạn số lần làm mỗi ngày.\n"
                                     "(1 bài đăng giá 10k).")
@@ -119,7 +119,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         step_1 = (
             "Bạn bấm sao chép link nhóm ở dưới\n"
             "<code>https://t.me/+MPYtI16HEBVmOTg1</code>,\n"
-         "  rồi mời người khác vào.\n\n"
+         
         )
         await query.message.reply_text(step_1, parse_mode="HTML")
 
@@ -134,7 +134,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(step_3, parse_mode="HTML")
 
         step_4 = (
-            "Bạn mời người khác vào nhóm thì phải đăng ít nhất 10 bài viết mới được tính lượt mời."
+            "Bạn mời người khác vào nhóm thì đăng ít nhất 10 bài viết mới được tính lượt mời."
         )
         await query.message.reply_text(step_4, parse_mode="HTML")
 
