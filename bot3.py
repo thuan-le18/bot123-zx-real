@@ -118,7 +118,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
 
         step_1 = (
             "Bạn bấm sao chép link nhóm ở dưới lại rồi mời người khác vào.\n"
-            "<code>https://t.me/+MPYtI16HEBVmOTg1</code>,\n"
+            "<code>https://t.me/+MPYtI16HEBVmOTg1</code>\n"
          
         )
         await query.message.reply_text(step_1, parse_mode="HTML")
@@ -134,7 +134,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(step_3, parse_mode="HTML")
 
         step_4 = (
-            "Bạn mời người khác vào nhóm thì đăng ít nhất 10 bài viết mới được tính lượt mời."
+            "Bạn mời người khác vào nhóm thì đi đăng ít nhất 10 bài viết mới được tính lượt mời."
         )
         await query.message.reply_text(step_4, parse_mode="HTML")
 
