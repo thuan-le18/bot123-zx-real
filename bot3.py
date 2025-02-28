@@ -116,12 +116,12 @@ async def button_click(update: Update, context: CallbackContext) -> None:
 
         step_1 = (
             "Bạn bấm sao chép link nhóm ở dưới lại rồi mời người khác vào.\n"
-            "https://t.me/+MPYtI16HEBVmOTg1\n"
+            "<code>https://t.me/+MPYtI16HEBVmOTg1</code>\n"
         )
         await query.message.reply_text(step_1, parse_mode="HTML")
 
         step_2_3 = (
-            "Bạn mời họ vào nhóm, họ tham gia nhóm là được. Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx."
+            "Bạn mời họ vào nhóm, họ tham gia nhóm là được. Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
         )
         await query.message.reply_text(step_2_3, parse_mode="HTML")
 
