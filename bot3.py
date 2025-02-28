@@ -58,11 +58,10 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(message, reply_markup=reply_markup, parse_mode="HTML")
         
         work_message = ("<b>Cách làm việc</b>\n"
-                        
                         "Bạn tham gia các nhóm trên Facebook 'Việc làm online, Tìm việc làm....\n"
                         "Sau đó bạn đăng nội dung đó vào các hội nhóm rồi chụp lại gửi cho @minhvuzx.\n\n"
                         "* Đăng ít nhất 10 bài viết hoặc 30 bình luận mới có lương và không giới hạn số lần làm mỗi ngày.\n"
-                                    "(1 bài đăng giá 10k).")
+                        "(1 bài đăng giá 10k).")
         
         await query.message.reply_text(work_message, parse_mode="HTML")
         await query.message.reply_photo(photo=IMAGE_1)
@@ -77,74 +76,17 @@ async def button_click(update: Update, context: CallbackContext) -> None:
                         "12h bạn gửi những ảnh bạn đi đăng bài qua Telegram @minhvuzx.\n\n"
                         "Nếu qua 12h bạn làm thêm thì gửi qua trước 19H.")
         await query.message.reply_text(time_message, parse_mode="HTML")
-
-        salary_message = ("<b>Thời gian nhận lương</b>\n"
-                          
-                          "LƯƠNG SẼ ĐƯỢC NHẬN VÀO 19H-19H30.\n\n"
-                          "Khi nào kênh thông báo yêu cầu CTV gửi STK để nhận lương thì bạn vui lòng gửi STK qua cho @minhvuzx.")
-        await query.message.reply_text(salary_message, parse_mode="HTML")
-
-        example_message = ("<b>Ví dụ</b>\n"
-                           "Sáng 8h bạn làm được 17 cmt thì gửi qua mình lúc 12h trưa.\n\n"
-                           "Nếu sau 12h bạn làm thêm 22 cmt thì bạn gửi qua mình lúc nào cũng được, miễn trước 19h tối.")
-        await query.message.reply_text(example_message, parse_mode="HTML")
-
-        # Thêm 3 dấu chấm tách riêng biệt
-        await query.message.reply_text(".")
-        await query.message.reply_text(".")
-
+    
     elif query.data == "luuy":
         note_message = ("⚠️ <b>Lưu Ý</b>\n\n"
                         "• Nếu FB bạn bị khóa comment hoặc đăng bài 24h thì có thể dùng acc FB khác làm.\n\n"
-                        "• Bình luận trên 30 bài mới có lương và làm bao nhiêu nhận bấy nhiêu. "
-                        "Trên 100 bài sẽ được thưởng thêm.\n\n"
+                        "• Bình luận trên 30 bài mới có lương và làm bao nhiêu nhận bấy nhiêu. Trên 100 bài sẽ được thưởng thêm.\n\n"
                         "• Nếu đăng bài không được thì các CTV có thể đổi nhóm và tiếp tục làm như các bước hướng dẫn.\n\n"
                         "• Làm xong 12h trưa gửi ảnh qua cho chủ group: @minhvuzx.\n\n"
-                        "• Bên mình chỉ có duy nhất @minhvuzx là chủ group và trợ lý bank, "
-                        "không có ai mang danh cùng công ty để đi lừa mọi người. Nếu mất tiền mình không chịu trách nhiệm!!!")
-        await query.message.reply_text(note_message, parse_mode="HTML")       
-
-        # Thêm 3 dấu chấm tách riêng biệt
-        await query.message.reply_text(".")
-        await query.message.reply_text(".")
-
- 
-    elif query.data == "moivaonhom":
-        invite_message = (
-            "<b>Hướng dẫn mời vào nhóm:</b>\n\n"
-            "Bạn mời 1 người vào nhóm là được 60k.\n\n"
-        )
-        await query.message.reply_text(invite_message, parse_mode="HTML")
-
-        step_1 = (
-            "Bạn bấm sao chép link nhóm ở dưới lại rồi mời người khác vào.\n"
-            "<code>https://t.me/+MPYtI16HEBVmOTg1</code>\n"
-         
-        )
-        await query.message.reply_text(step_1, parse_mode="HTML")
-
-        step_2 = (
-            "Bạn mời họ vào nhóm,họ tham gia nhóm là được.\n\n"
-        )
-        await query.message.reply_text(step_2, parse_mode="HTML")
-
-        step_3 = (
-            "Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
-        )
-        await query.message.reply_text(step_3, parse_mode="HTML")
-
-        step_4 = (
-            "Bạn mời người khác vào nhóm thì đi đăng ít nhất 10 bài viết mới được tính lượt mời."
-        )
-        await query.message.reply_text(step_4, parse_mode="HTML")
-
-        # Thêm 3 dấu chấm tách riêng biệt
-        await query.message.reply_text(".")
-        await query.message.reply_text(".")
-
+                        "• Bên mình chỉ có duy nhất @minhvuzx là chủ group và trợ lý bank, không có ai mang danh cùng công ty để đi lừa mọi người. Nếu mất tiền mình không chịu trách nhiệm!!!")
+        await query.message.reply_text(note_message, parse_mode="HTML")
 
 async def handle_message(update: Update, context: CallbackContext) -> None:
-    # Phản hồi khi người dùng gửi tin nhắn hoặc ảnh
     response_message = (
         "Vui lòng không gửi ảnh, cmt hoặc nhắn tin cho bot hướng dẫn.\n\n"
         "Hãy vui lòng nhắn tin cho @minhvuzx để được hướng dẫn.\n\n"
@@ -157,8 +99,6 @@ def main() -> None:
     
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button_click))
-    
-    # Thêm handler để xử lý mọi tin nhắn và ảnh
     application.add_handler(MessageHandler(filters.TEXT | filters.PHOTO, handle_message))
     
     print("Bot đang chạy...")
