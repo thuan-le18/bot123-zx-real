@@ -109,30 +109,30 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(".")
 
     elif query.data == "moivaonhom":
-    invite_message = (
-        "Bạn mời 1 người vào nhóm là được 60k.\n\n"
-    )
-    await query.message.reply_text(invite_message, parse_mode="HTML")
+        invite_message = (
+            "Bạn mời 1 người vào nhóm là được 60k.\n\n"
+        )
+        await query.message.reply_text(invite_message, parse_mode="HTML")
 
-    step_1 = (
-        "Bạn bấm sao chép link nhóm ở dưới lại rồi mời người khác vào.\n"
-        "<code>https://t.me/+MPYtI16HEBVmOTg1</code>\n"
-    )
-    await query.message.reply_text(step_1, parse_mode="HTML")
+        step_1 = (
+            "Bạn bấm sao chép link nhóm ở dưới lại rồi mời người khác vào.\n"
+            "<code>https://t.me/+MPYtI16HEBVmOTg1</code>\n"
+        )
+        await query.message.reply_text(step_1, parse_mode="HTML")
 
-    step_2_3 = (
-        "Bạn mời họ vào nhóm, họ tham gia nhóm là được. Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
-    )
-    await query.message.reply_text(step_2_3, parse_mode="HTML")
+        step_2_3 = (
+            "Bạn mời họ vào nhóm, họ tham gia nhóm là được. Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
+        )
+        await query.message.reply_text(step_2_3, parse_mode="HTML")
 
-    step_4 = (
-        "Bạn mời người khác vào nhóm thì đi đăng ít nhất 10 bài viết mới được tính lượt mời."
-    )
-    await query.message.reply_text(step_4, parse_mode="HTML")
+        step_4 = (
+            "Bạn mời người khác vào nhóm thì đi đăng ít nhất 10 bài viết mới được tính lượt mời."
+        )
+        await query.message.reply_text(step_4, parse_mode="HTML")
 
-    # Thêm 3 dấu chấm tách riêng biệt
-    await query.message.reply_text(".")
-    await query.message.reply_text(".")
+        # Thêm 3 dấu chấm tách riêng biệt
+        await query.message.reply_text(".")
+        await query.message.reply_text(".")
 
 
 async def handle_message(update: Update, context: CallbackContext) -> None:
@@ -158,3 +158,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+
