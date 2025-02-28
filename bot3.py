@@ -42,16 +42,15 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         message = ("Xin chào 👋\n\n"
-                   
                    "Bấm các nút phía dưới👇👇để được hướng dẫn.")
         await query.message.reply_text(message, reply_markup=reply_markup, parse_mode="Markdown")
 
     elif query.data == "bailam":
         message = ("<pre>Tuyển người vào nhóm rồi chụp màn hình lại nhận công (60k/1 lần).\n"
                    "Chỉ cần vào mời nhóm rồi chụp ảnh màn hình gửi mình là được.\n"
-                   "IB Telegram:@minhvuzx (có tích xanh).</pre>\n\n"
+                   "IB Telegram:@minhvuzx có tích xanh</pre>\n\n"
                    "<b>Cách Sao Chép ⤴️⤴️</b>\n"
-                   "Bạn bấm vào chữ bên trên, nội dung sẽ tự động sao chép!.")
+                   "Bạn bấm vào chữ bên trên, nội dung sẽ tự động sao chép.")
         
         keyboard = [[InlineKeyboardButton("ADMIN", url=ADMIN_TELEGRAM)]]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -62,14 +61,14 @@ async def button_click(update: Update, context: CallbackContext) -> None:
                         "Bạn tham gia các nhóm trên Facebook 'Việc làm online, Tìm việc làm'....\n"
                         "Sau đó bạn đăng nội dung đó vào các hội nhóm rồi chụp lại gửi cho @minhvuzx.\n\n"
                         "* Đăng ít nhất 10 bài viết hoặc 30 bình luận mới có lương và không giới hạn số lần làm mỗi ngày.\n"
-                        "(1 bài đăng giá 10k).")
+                                 "(1 bài đăng giá 10k).")
         
         await query.message.reply_text(work_message, parse_mode="HTML")
         await query.message.reply_photo(photo=IMAGE_1)
         await query.message.reply_photo(photo=IMAGE_2)
         await query.message.reply_photo(photo=IMAGE_3)
         await query.message.reply_photo(photo=IMAGE_LAST)
-        await query.message.reply_text("Nếu bài đăng không được duyệt bạn có thể đi bình luận vào các bài viết, mỗi bài giá 5k.")
+        await query.message.reply_text("Nếu bài đăng không được duyệt bạn có thể đi bình luận các bài viết, mỗi bài giá 5k.")
 
     elif query.data == "time":
         time_message = ("<b>Thời gian làm việc</b>\n"
@@ -116,9 +115,9 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(invite_message, parse_mode="HTML")
 
         step_1 = (
-            "• Bạn chạm vào sao chép link nhóm ở dưới\n"
+            "• Bạn bấm vào sao chép link nhóm ở dưới\n"
             "<code>https://t.me/+MPYtI16HEBVmOTg1</code>,\n"
-            "  rồi mời người khác vào.\n\n"
+       "  rồi mời người khác vào.\n\n"
         )
         await query.message.reply_text(step_1, parse_mode="HTML")
 
