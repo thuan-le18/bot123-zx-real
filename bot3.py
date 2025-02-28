@@ -58,6 +58,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(message, reply_markup=reply_markup, parse_mode="HTML")
         
         work_message = ("<b>Cách làm việc</b>\n"
+                        
                         "Bạn tham gia các nhóm trên Facebook 'Việc làm online, Tìm việc làm'....\n"
                         "Sau đó bạn đăng nội dung đó vào các hội nhóm rồi chụp lại gửi cho @minhvuzx.\n\n"
                         "* Đăng ít nhất 10 bài viết hoặc 30 bình luận mới có lương và không giới hạn số lần làm mỗi ngày.\n"
@@ -78,6 +79,7 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(time_message, parse_mode="HTML")
 
         salary_message = ("<b>Thời gian nhận lương</b>\n"
+                          
                           "• LƯƠNG SẼ ĐƯỢC NHẬN VÀO 19H-19H30.\n\n"
                           "• Khi nào kênh thông báo yêu cầu CTV gửi STK để nhận lương thì bạn vui lòng gửi STK qua cho @minhvuzx.")
         await query.message.reply_text(salary_message, parse_mode="HTML")
@@ -115,19 +117,19 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(invite_message, parse_mode="HTML")
 
         step_1 = (
-            "• Bạn bấm vào sao chép link nhóm ở dưới\n"
+            "• Bạn bấm sao chép link nhóm ở dưới\n"
             "<code>https://t.me/+MPYtI16HEBVmOTg1</code>,\n"
          "  rồi mời người khác vào.\n\n"
         )
         await query.message.reply_text(step_1, parse_mode="HTML")
 
         step_2 = (
-            "• Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
+            "• Bạn mời họ vào nhóm,họ tham gia nhóm là được.\n\n"
         )
         await query.message.reply_text(step_2, parse_mode="HTML")
 
         step_3 = (
-            "• Bạn mời họ vào nhóm,họ tham gia nhóm là được.\n\n"
+            "• Xong, bạn nhớ chụp lại tên Telegram của người đó và gửi cho @minhvuzx.\n\n"
         )
         await query.message.reply_text(step_3, parse_mode="HTML")
 
