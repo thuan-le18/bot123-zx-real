@@ -46,9 +46,8 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(message, reply_markup=reply_markup, parse_mode="Markdown")
 
     elif query.data == "bailam":
-        message = ("<pre>Tuyển người vào nhóm rồi chụp màn hình lại nhận công (60k/1 lần).\n"
-                   "Chỉ cần vào nhóm rồi chụp ảnh màn hình gửi mình là được.\n"
-                   "IB Telegram:@minhvuzx có tích xanh</pre>\n\n"
+        # Chỉnh sửa nội dung theo yêu cầu:
+        message = ("<pre>Tuyển người vô nhóm rồi chụp màn hình lại nhận công .(60k 1 lần) chỉ cần vô nhóm rồi chụp ảnh màn hình gửi mình là được ib telegram @minhvuzx có tích xanh</pre>\n\n"
                    "<b>Cách Sao Chép ⤴️⤴️</b>\n"
                    "Bạn bấm vào chữ bên trên, nội dung sẽ tự động sao chép.")
         
@@ -58,11 +57,10 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         await query.message.reply_text(message, reply_markup=reply_markup, parse_mode="HTML")
         
         work_message = ("<b>Cách làm việc</b>\n"
-                        
                         "Bạn tham gia các nhóm trên Facebook 'Việc làm online, Tìm việc làm....\n"
                         "Sau đó bạn đăng nội dung đó vào các hội nhóm rồi chụp lại gửi cho @minhvuzx.\n\n"
                         "* Đăng ít nhất 10 bài viết hoặc 30 bình luận mới có lương và không giới hạn số lần làm mỗi ngày.\n"
-                                    "(1 bài đăng giá 10k).")
+                        "(1 bài đăng giá 10k).")
         
         await query.message.reply_text(work_message, parse_mode="HTML")
         await query.message.reply_photo(photo=IMAGE_1)
@@ -133,7 +131,6 @@ async def button_click(update: Update, context: CallbackContext) -> None:
         # Thêm 3 dấu chấm tách riêng biệt
         await query.message.reply_text(".")
         await query.message.reply_text(".")
-
 
 async def handle_message(update: Update, context: CallbackContext) -> None:
     # Phản hồi khi người dùng gửi tin nhắn hoặc ảnh
