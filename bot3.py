@@ -2,7 +2,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMe
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext, MessageHandler, filters
 
 # Thay token bot của bạn vào đây
-TOKEN = "7337071978:AAFX4KYI49CbmYHbWAKdGoEMf0Za142BPKk"
+TOKEN = "7438193188:AAFUoblPvUvthTGAJS9YXCDh751-AhSxfKE"
 # Thay link kênh thông báo của bạn vào đây
 CHANNEL_LINK = "https://t.me/+MPYtI16HEBVmOTg1"
 # Thay Telegram Admin
