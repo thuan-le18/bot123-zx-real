@@ -28,11 +28,6 @@ IMAGE_LAST = "https://imgur.com/wlOW0JD"
 USERS_FILE = "users.json"
 BOT_MESSAGES = {}
 
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO
-)
-
 # ----------------- Quản lý file JSON -----------------
 def load_users():
     if not os.path.exists(USERS_FILE):
@@ -41,7 +36,6 @@ def load_users():
         return json.load(f)
 
 def save_users(users):
-    logging.info("Saving users: %s", users)
     with open(USERS_FILE, "w") as f:
         json.dump(users, f, indent=4)
 
@@ -56,7 +50,6 @@ def update_user_activity(user_id, chat_id=None):
 def is_banned(user_id):
     users = load_users()
     status = users.get(str(user_id), {}).get("banned", False)
-    logging.info("User %s banned status: %s", user_id, status)
     return status
 
 # Tự động ban nếu không hoạt động quá 1 ngày và tự động xóa tin nhắn (nếu có chat_id)
@@ -66,7 +59,6 @@ async def auto_ban_job(context: CallbackContext):
     for user_id, data in users.items():
         # Nếu chưa bị ban và không hoạt động quá 1 ngày (1*24*3600 giây)
         if not data.get("banned", False) and now - data["last_active"] > 1 * 24 * 3600:
-            logging.info("Auto-banning user %s due to inactivity", user_id)
             users[user_id]["banned"] = True
             save_users(users)
             chat_id = data.get("chat_id")
@@ -74,7 +66,6 @@ async def auto_ban_job(context: CallbackContext):
                 try:
                     await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
                 except Exception as e:
-                    logging.error("Lỗi gửi thông báo ban cho user %s: %s", user_id, e)
                 await delete_bot_messages(user_id, chat_id, context)
 # -----------------------------------------------------
 
@@ -87,9 +78,7 @@ async def delete_bot_messages(user_id, chat_id, context: CallbackContext):
     for msg_id in message_ids:
         try:
             await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
-            logging.info("Đã xóa tin nhắn %s cho user %s", msg_id, user_id)
         except Exception as e:
-            logging.error("Không thể xóa tin nhắn %s cho user %s: %s", msg_id, user_id, e)
     BOT_MESSAGES[str(user_id)] = []
 
 def check_banned(func):
@@ -325,7 +314,6 @@ def main() -> None:
         now = time.time()
         for user_id, data in users.items():
             if not data.get("banned", False) and now - data["last_active"] > 1 * 24 * 3600:
-                logging.info("Auto-banning user %s due to inactivity", user_id)
                 users[user_id]["banned"] = True
                 save_users(users)
                 chat_id = data.get("chat_id")
@@ -333,7 +321,6 @@ def main() -> None:
                     try:
                         await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
                     except Exception as e:
-                        logging.error("Lỗi gửi thông báo ban cho user %s: %s", user_id, e)
                     await delete_bot_messages(user_id, chat_id, context)
     
     
