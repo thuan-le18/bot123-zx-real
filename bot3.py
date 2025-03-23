@@ -90,6 +90,7 @@ async def delete_bot_messages(user_id, chat_id, context: CallbackContext):
 def check_banned(func):
     @wraps(func)
     async def wrapper(update: Update, context: CallbackContext):
+        # Nếu là admin thì bỏ qua kiểm tra ban
         if update.message:
             user_id = update.message.from_user.id
             chat_id = update.message.chat.id
@@ -98,8 +99,10 @@ def check_banned(func):
             chat_id = update.callback_query.message.chat.id
         else:
             return await func(update, context)
+        if user_id == ADMIN_ID:
+            return await func(update, context)
         if is_banned(user_id):
-            await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
+            await context.bot.send_message(chat_id=chat_id, text="You've been banned")
             await delete_bot_messages(user_id, chat_id, context)
             return
         return await func(update, context)
@@ -341,7 +344,7 @@ def main() -> None:
     application.add_handler(CallbackQueryHandler(button_click), group=1)
     application.add_handler(MessageHandler((filters.TEXT & ~filters.COMMAND) | filters.PHOTO, handle_message), group=2)
     
-    logging.info("Bot hướng dẫn đang chạy...")
+    print("Bot hướng dẫn đang chạy...")
     application.run_polling()
 
 if __name__ == '__main__':
