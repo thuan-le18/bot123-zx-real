@@ -95,6 +95,7 @@ async def delete_bot_messages(user_id, chat_id, context: CallbackContext):
 def check_banned(func):
     @wraps(func)
     async def wrapper(update: Update, context: CallbackContext):
+        # Nếu là admin thì bỏ qua kiểm tra ban
         if update.message:
             user_id = update.message.from_user.id
             chat_id = update.message.chat.id
@@ -103,8 +104,10 @@ def check_banned(func):
             chat_id = update.callback_query.message.chat.id
         else:
             return await func(update, context)
+        if user_id == ADMIN_ID:
+            return await func(update, context)
         if is_banned(user_id):
-            await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
+            await context.bot.send_message(chat_id=chat_id, text="You've been banned")
             await delete_bot_messages(user_id, chat_id, context)
             return
         return await func(update, context)
