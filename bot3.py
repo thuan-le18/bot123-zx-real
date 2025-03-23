@@ -36,6 +36,7 @@ def load_users():
         return json.load(f)
 
 def save_users(users):
+    logging.info("Saving users: %s", users)
     with open(USERS_FILE, "w") as f:
         json.dump(users, f, indent=4)
 
@@ -50,6 +51,7 @@ def update_user_activity(user_id, chat_id=None):
 def is_banned(user_id):
     users = load_users()
     status = users.get(str(user_id), {}).get("banned", False)
+    logging.info("User %s banned status: %s", user_id, status)
     return status
 
 # Tự động ban nếu không hoạt động quá 1 ngày và tự động xóa tin nhắn (nếu có chat_id)
@@ -59,6 +61,7 @@ async def auto_ban_job(context: CallbackContext):
     for user_id, data in users.items():
         # Nếu chưa bị ban và không hoạt động quá 1 ngày (1*24*3600 giây)
         if not data.get("banned", False) and now - data["last_active"] > 1 * 24 * 3600:
+            logging.info("Auto-banning user %s due to inactivity", user_id)
             users[user_id]["banned"] = True
             save_users(users)
             chat_id = data.get("chat_id")
@@ -66,6 +69,7 @@ async def auto_ban_job(context: CallbackContext):
                 try:
                     await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
                 except Exception as e:
+                    logging.error("Lỗi gửi thông báo ban cho user %s: %s", user_id, e)
                 await delete_bot_messages(user_id, chat_id, context)
 # -----------------------------------------------------
 
@@ -78,13 +82,14 @@ async def delete_bot_messages(user_id, chat_id, context: CallbackContext):
     for msg_id in message_ids:
         try:
             await context.bot.delete_message(chat_id=chat_id, message_id=msg_id)
+            logging.info("Đã xóa tin nhắn %s cho user %s", msg_id, user_id)
         except Exception as e:
+            logging.error("Không thể xóa tin nhắn %s cho user %s: %s", msg_id, user_id, e)
     BOT_MESSAGES[str(user_id)] = []
 
 def check_banned(func):
     @wraps(func)
     async def wrapper(update: Update, context: CallbackContext):
-        # Nếu là admin thì bỏ qua kiểm tra ban
         if update.message:
             user_id = update.message.from_user.id
             chat_id = update.message.chat.id
@@ -93,10 +98,8 @@ def check_banned(func):
             chat_id = update.callback_query.message.chat.id
         else:
             return await func(update, context)
-        if user_id == ADMIN_ID:
-            return await func(update, context)
         if is_banned(user_id):
-            await context.bot.send_message(chat_id=chat_id, text="You've been banned")
+            await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
             await delete_bot_messages(user_id, chat_id, context)
             return
         return await func(update, context)
@@ -314,6 +317,7 @@ def main() -> None:
         now = time.time()
         for user_id, data in users.items():
             if not data.get("banned", False) and now - data["last_active"] > 1 * 24 * 3600:
+                logging.info("Auto-banning user %s due to inactivity", user_id)
                 users[user_id]["banned"] = True
                 save_users(users)
                 chat_id = data.get("chat_id")
@@ -321,6 +325,7 @@ def main() -> None:
                     try:
                         await context.bot.send_message(chat_id=chat_id, text="You've been banned ")
                     except Exception as e:
+                        logging.error("Lỗi gửi thông báo ban cho user %s: %s", user_id, e)
                     await delete_bot_messages(user_id, chat_id, context)
     
     
@@ -336,7 +341,7 @@ def main() -> None:
     application.add_handler(CallbackQueryHandler(button_click), group=1)
     application.add_handler(MessageHandler((filters.TEXT & ~filters.COMMAND) | filters.PHOTO, handle_message), group=2)
     
-    print("Bot hướng dẫn đang chạy...")
+    logging.info("Bot hướng dẫn đang chạy...")
     application.run_polling()
 
 if __name__ == '__main__':
