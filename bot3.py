@@ -1,6 +1,7 @@
 import json
 import os
 import time
+from keep_alive import keep_alive
 import logging
 from functools import wraps
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
@@ -345,6 +346,7 @@ def main() -> None:
     application.add_handler(MessageHandler((filters.TEXT & ~filters.COMMAND) | filters.PHOTO, handle_message), group=2)
     
     print("Bot hướng dẫn đang chạy...")
+    keep_alive()
     application.run_polling()
 
 if __name__ == '__main__':
